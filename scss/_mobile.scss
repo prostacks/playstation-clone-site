@@ -1,0 +1,468 @@
+$psBlue: #0070cc;
+$psOrange: #cd3d0f;
+$psLightBlue: #8fd5fd;
+$psDarkBlue: #00439c;
+
+// TABLETS
+// TABLETS
+// TABLETS
+// TABLETS
+// TABLETS
+
+@media (max-width: 792px) and (min-width: 651px) {
+  #mainNav {
+    .underline {
+      display: none;
+    }
+
+    .btn-dark {
+      font-size: 0.8rem;
+    }
+  }
+
+  .subMenus {
+    .top {
+      ul {
+        gap: 0;
+        height: 100%;
+        li {
+          width: 115px;
+          height: 115px;
+        }
+        img {
+          height: 2.5rem;
+        }
+      }
+    }
+    .bottom {
+      ul {
+        gap: 1.5rem;
+        li {
+          font-size: 1rem;
+          a {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+
+  .mainShowcase {
+    height: 85vh;
+    #showcaseImg {
+      background-size: 175vw;
+    }
+  }
+
+  .showcase {
+    height: 85vh;
+    .bgImg {
+      background-size: 175vw;
+    }
+  }
+
+  .bottomBar {
+    transform: translateY(0);
+    height: 30%;
+    opacity: 1;
+    &.xl {
+      height: 30%;
+    }
+
+    .barContent {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      // div {
+      //   display: flex;
+      //   flex-direction: column;
+      //   align-items: flex-start;
+      // }
+    }
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .btn-orange,
+  .btn-blue {
+    width: 100%;
+    text-align: center;
+  }
+
+  .ps4pro {
+    .flex {
+      flex-direction: column;
+      row-gap: 1rem;
+      img {
+        width: 100%;
+        margin: 0;
+      }
+      #fromPlaystation {
+        width: 100%;
+        margin: 0;
+      }
+      #content {
+        margin: 0;
+      }
+    }
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+    width: 100%;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 3rem;
+    img {
+      width: 75%;
+    }
+  }
+
+  footer {
+    ul {
+      justify-content: start;
+      column-gap: 1rem;
+      row-gap: 0.5rem;
+      margin-left: 1rem;
+    }
+  }
+}
+
+// SMARTPHONES
+// SMARTPHONES
+// SMARTPHONES
+// SMARTPHONES
+// SMARTPHONES
+
+@media (max-width: 650px) {
+  #wrapper {
+    overflow-x: hidden;
+  }
+
+  .masterNav {
+    position: fixed;
+    top: 0;
+  }
+
+  #mobileNav {
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    box-shadow: none;
+    &.open {
+      box-shadow: 5px 3px 5px #777;
+      transition: box-shadow 250ms ease 250ms;
+    }
+
+    .logo {
+      padding: 0.3rem;
+      color: $psBlue;
+      font-size: 2.2rem;
+    }
+    .mobileMenu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      a {
+        padding: 0.3rem;
+      }
+
+      .menuBtn {
+        position: relative;
+        height: 100%;
+
+        & a {
+          padding: 0.3rem;
+        }
+      }
+      .fa-search {
+        margin-left: 0.2rem;
+        font-size: 1.3rem;
+      }
+
+      .fa-times {
+        margin-right: 0.2rem;
+        font-size: 1.8rem;
+        position: absolute;
+        left: 0;
+        visibility: hidden;
+      }
+
+      .fa-bars {
+        margin-right: 0.2rem;
+        font-size: 1.5rem;
+        // visibility: hidden;
+      }
+    }
+    & > a {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: $psBlue;
+    }
+  }
+
+  .mainShowcase {
+    height: 70vh;
+    #showcaseImg {
+      height: 60vh;
+      background-size: 175vw;
+    }
+    .bottomBar {
+      transform: translateY(0);
+      height: 30%;
+      opacity: 1;
+
+      .barContent {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        div {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+
+  .showcase {
+    height: 70vh;
+    .bgImg {
+      height: 55vh;
+      background-size: 175vw;
+    }
+
+    .bottomBar {
+      transform: translateY(0);
+      height: 40%;
+      opacity: 1;
+      &.xl {
+        height: 15rem;
+      }
+
+      .barContent {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-evenly;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  .divider {
+    display: none;
+    &::after {
+      content: "";
+    }
+  }
+
+  .btn-orange,
+  .btn-blue {
+    width: 100%;
+    text-align: center;
+  }
+
+  .ps4pro {
+    .flex {
+      flex-direction: column;
+      row-gap: 1rem;
+      padding: 0;
+      margin: auto;
+      img {
+        width: 100%;
+        margin: 0;
+        margin-top: 4rem;
+      }
+      #fromPlaystation {
+        width: 100%;
+        margin: 0;
+      }
+    }
+    #content {
+      margin: 0;
+    }
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto;
+    width: 100%;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+    margin: auto;
+    width: 100%;
+    img {
+      width: 75%;
+    }
+  }
+
+  footer {
+    .logo,
+    .aboutSony {
+      display: none;
+    }
+    .topFooter {
+      height: auto;
+    }
+    .footerNav {
+      padding: 1rem 0;
+    }
+
+    ul {
+      justify-content: start;
+      column-gap: 1rem;
+      row-gap: 0.5rem;
+      margin-left: 1rem;
+    }
+  }
+  #sonyBar {
+    position: absolute;
+    bottom: 0;
+  }
+
+  // mobile menu
+  .rightNav,
+  .desktopIcons {
+    display: none;
+  }
+
+  .mobileIcons {
+    display: block;
+    color: #aaa;
+    &:hover {
+      color: $psBlue;
+    }
+    &.current {
+      color: $psBlue;
+    }
+  }
+  .masterNav {
+    .container {
+      padding: 0;
+    }
+  }
+  #mainNav {
+    position: absolute;
+    z-index: -1;
+    top: 4rem;
+    height: 100vh;
+    width: 100vw;
+    padding: 0 1.5rem;
+    display: block;
+    transform: translateX(-100%);
+    transition: transform 500ms ease;
+    &.open {
+      transition: transform 500ms ease;
+      transform: translateX(0);
+    }
+
+    .navList {
+      flex-direction: column;
+      width: 100%;
+      li {
+        margin: 0.5rem 0;
+        &.current {
+          background-color: #ebf7ff;
+        }
+      }
+      .subLinks {
+        display: grid;
+        grid-template-columns: 1fr 1fr 8fr;
+        font-size: 1rem;
+        gap: 2rem;
+
+        &:hover {
+          color: $psBlue;
+        }
+        .fa-chevron-right {
+          justify-self: end;
+        }
+      }
+    }
+
+    .logo {
+      display: none;
+    }
+  }
+
+  .subMenus {
+    transform: translateY(0);
+    transform: translateX(100%);
+    right: 0;
+    width: 80vw;
+    hr {
+      width: 90%;
+      margin: auto;
+    }
+    .menuHeader {
+      display: block;
+      padding: 0.8rem;
+      margin: 0.5rem 0 0 0.5rem;
+
+      span {
+        margin-left: 0.8rem;
+        justify-self: center;
+      }
+    }
+    .top {
+      height: 60vh;
+      ul {
+        gap: 0.5rem;
+        margin-bottom: 0;
+
+        li {
+          width: 115px;
+          height: 115px;
+        }
+
+        img {
+          height: 3rem;
+        }
+      }
+    }
+    .servicesMenu,
+    .newsMenu {
+      height: 100vh;
+    }
+    .shopMenu,
+    .helpMenu {
+      height: 50vh;
+    }
+
+    .bottom {
+      height: 40vh;
+      ul {
+        gap: 0.8rem;
+        flex-direction: column;
+        height: 30vh;
+        align-items: flex-start;
+        margin-left: 1rem;
+      }
+      li {
+        list-style: none;
+      }
+    }
+  }
+  .searchBox {
+    // width: 100vw;
+    &.scale {
+      transform: scale(0.5);
+    }
+  }
+}

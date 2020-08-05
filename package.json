@@ -1,0 +1,14 @@
+{
+  "name": "playstation-clone-site",
+  "version": "1.0.0",
+  "description": "playstation site",
+  "main": "script.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive"
+  },
+  "author": "prostacks",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  }
+}

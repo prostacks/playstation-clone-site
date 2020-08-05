@@ -1,0 +1,833 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+a {
+  text-decoration: none;
+  color: #333; }
+
+li {
+  list-style: none; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  height: 100%;
+  width: 100%; }
+
+.ps4pro,
+.gameGallery,
+.exp,
+.digital {
+  background-color: #fff; }
+
+#overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 30;
+  position: absolute;
+  overflow-x: hidden;
+  top: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition-property: visibility, opacity;
+  transition-delay: 250ms;
+  transition-duration: 250ms;
+  transition-timing-function: ease; }
+  #overlay.show {
+    transition-property: all;
+    transition-delay: 250ms;
+    transition-duration: 250ms;
+    transition-timing-function: ease;
+    visibility: visible;
+    opacity: 1; }
+
+.searchBox {
+  width: 100%;
+  display: none;
+  z-index: 35;
+  top: 0;
+  transform-box: border-box;
+  transform: scale(0) translate(100%, 100%);
+  transition-property: transform, margin-top;
+  transition-duration: 500ms;
+  transition-timing-function: ease; }
+  .searchBox form {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 5px 5px 10px #222; }
+  .searchBox.scale {
+    transition-property: all;
+    transform-box: border-box;
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+    transform: scale(1) translate(0%, 0%);
+    margin-top: 5rem;
+    position: absolute;
+    display: flex;
+    justify-content: center; }
+  .searchBox input {
+    font-size: 1.5rem;
+    font-weight: 200;
+    padding: 1rem 1rem 1rem 0.5rem;
+    outline: none;
+    width: 25rem;
+    border: none;
+    border-left: solid 1px #ddd; }
+  .searchBox select {
+    font-size: 1.5rem;
+    outline: none;
+    padding: 1rem 2rem 1rem 0.5rem;
+    border: none; }
+  .searchBox a {
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: #0070cc;
+    color: #fff; }
+
+.container {
+  padding: 0 1.5rem;
+  display: block;
+  width: 100vw;
+  max-width: 100%;
+  height: 100%; }
+
+.showcase {
+  height: 70vh;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden; }
+
+.bgImg {
+  transform: scale(1.08);
+  height: 70vh; }
+  .bgImg.scale {
+    transition-property: all;
+    transition-duration: 7s;
+    transition-timing-function: ease-in-out;
+    transform: scaleX(1); }
+
+.btn, #mainNav .btn-dark {
+  padding: 0.6rem 1.1rem;
+  color: #fff; }
+  .btn-orange {
+    background-color: #cd3d0f;
+    padding: 13px 20px;
+    color: #fff;
+    display: inline-block;
+    text-align: center; }
+    .btn-orange:hover {
+      opacity: 0.9; }
+  .btn-blue {
+    background-color: #0070cc;
+    padding: 13px 20px;
+    color: #fff;
+    display: inline-block;
+    text-align: center; }
+    .btn-blue:hover {
+      opacity: 0.9; }
+
+.divider::after {
+  content: "|"; }
+
+.letterSpace {
+  letter-spacing: 3px;
+  color: #0070cc;
+  text-transform: uppercase;
+  font-size: 0.8rem; }
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+  display: grid;
+  gap: 1rem;
+  width: 80%;
+  margin: auto; }
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  grid-gap: 3rem;
+  align-items: flex-end;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 5rem; }
+  .grid-3 img {
+    width: 100%;
+    padding-bottom: 2rem; }
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr); }
+
+.bottomBar {
+  height: 15%;
+  background-color: #222;
+  opacity: 0.9;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(80px); }
+  .bottomBar.show {
+    transition-property: all;
+    transition-duration: 1s;
+    transform: translateY(0px); }
+  .bottomBar h2 {
+    padding: 0.5rem; }
+  .bottomBar.xl {
+    height: 16%; }
+    .bottomBar.xl h2 {
+      text-align: center;
+      justify-self: center; }
+  .bottomBar p {
+    color: #fff; }
+  .bottomBar .container {
+    height: 100%; }
+  .bottomBar .barContent {
+    display: grid;
+    grid-template-columns: 3fr 1fr 15fr 3fr;
+    align-items: center;
+    height: 100%;
+    width: 100%; }
+    .bottomBar .barContent .divider {
+      color: #fff;
+      font-size: 3rem;
+      justify-self: flex-start; }
+    .bottomBar .barContent a {
+      color: #fff; }
+    .bottomBar .barContent div {
+      max-width: 88%; }
+
+.gradient {
+  height: 2px;
+  background: linear-gradient(45deg, #f3f3f3, rgba(34, 34, 34, 0.9), rgba(34, 34, 34, 0.9));
+  position: absolute;
+  opacity: 0;
+  background-size: 250%;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  animation: gradient 3s ease infinite alternate; }
+  .gradient.xl {
+    bottom: 16%; }
+  .gradient.show {
+    transition-property: opacity;
+    transition-duration: 250ms;
+    transition-delay: 1250ms;
+    opacity: 1; }
+
+@keyframes gradient {
+  0% {
+    background-position: left; }
+  100% {
+    background-position: right; } }
+
+.subMenus {
+  box-shadow: 5px 10px 13px #777;
+  position: absolute;
+  background-color: #fff;
+  opacity: 0;
+  top: 4rem;
+  z-index: -1;
+  visibility: hidden;
+  transform: translateY(-25rem);
+  transition: translate, visibility, 500ms ease; }
+  .subMenus.show {
+    transition: translate, visibility, 500ms ease;
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1; }
+  .subMenus.current {
+    transition: opacity 500ms ease;
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible; }
+  .subMenus .menuHeader {
+    display: none; }
+  .subMenus .top {
+    height: 10rem; }
+    .subMenus .top ul {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem; }
+      .subMenus .top ul li {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 130px;
+        height: 130px;
+        gap: 0.5rem; }
+        .subMenus .top ul li:hover {
+          border: 1px solid #ccc;
+          box-shadow: 1px 1px 4px #666;
+          border-radius: 4px; }
+        .subMenus .top ul li .fa-playstation {
+          padding: 0.5rem;
+          background-color: #00439c;
+          color: #fff;
+          border-radius: 50%; }
+      .subMenus .top ul img {
+        object-fit: contain;
+        height: 3.5rem; }
+      .subMenus .top ul i {
+        color: #00439c; }
+  .subMenus .bottom {
+    height: 5rem; }
+    .subMenus .bottom ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      height: 4rem;
+      align-items: center; }
+    .subMenus .bottom li {
+      list-style-type: disc;
+      color: #0070cc;
+      font-size: 1.5rem; }
+      .subMenus .bottom li a {
+        font-size: 1rem; }
+        .subMenus .bottom li a:hover {
+          color: #0070cc; }
+
+.blackbar {
+  height: 2.3rem;
+  position: relative;
+  z-index: 25;
+  background-color: #000;
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  align-items: center; }
+  .blackbar img {
+    width: 5rem;
+    justify-self: flex-end;
+    padding-right: 0.5rem; }
+
+.masterNav {
+  height: 4rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: #fff; }
+  .masterNav .container {
+    background-color: #fff; }
+
+#mobileNav {
+  display: none; }
+
+.mobileIcons {
+  display: none; }
+
+#mainNav {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+  background-color: #fff; }
+  #mainNav .leftNav {
+    display: flex; }
+    #mainNav .leftNav .logo {
+      padding: 0.3rem;
+      color: #0070cc;
+      font-size: 2.2rem; }
+  #mainNav ul {
+    list-style: none;
+    display: flex;
+    margin-top: 0.5rem; }
+    #mainNav ul li {
+      padding: 0.5rem;
+      line-height: 1.2;
+      font-size: 0.8rem; }
+      #mainNav ul li .current {
+        color: #0070cc; }
+      #mainNav ul li a:hover {
+        color: #0070cc; }
+  #mainNav .rightNav > * {
+    margin-right: 1rem; }
+  #mainNav .underline {
+    font-size: 0.8rem;
+    padding: 0.8rem; }
+    #mainNav .underline:hover {
+      text-decoration: underline;
+      color: #0070cc; }
+  #mainNav .fa-search {
+    font-size: 1.2rem; }
+  #mainNav .btn-dark {
+    background-color: #333;
+    font-weight: 500; }
+
+.mainShowcase {
+  position: relative; }
+  .mainShowcase #showcaseImg {
+    background: url("../img/playstation-5-showcase-homepage-marquee-desktop-01-ps5-11jun20-en-us.jpeg") center center/cover no-repeat;
+    height: 70vh;
+    position: relative; }
+
+.ps4pro {
+  position: relative; }
+
+.ps4pro .flex {
+  display: flex;
+  padding: 5rem 4rem; }
+  .ps4pro .flex img {
+    width: 50%;
+    object-fit: contain;
+    margin-left: 3rem; }
+  .ps4pro .flex #fromPlaystation {
+    width: 50%;
+    margin-left: 3rem;
+    margin-right: 7rem; }
+    .ps4pro .flex #fromPlaystation h2 {
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
+      color: #333; }
+    .ps4pro .flex #fromPlaystation #content {
+      margin: 1rem 0;
+      padding-right: 1rem;
+      font-weight: lighter;
+      color: #333;
+      line-height: 1.5; }
+    .ps4pro .flex #fromPlaystation .btn-orange {
+      margin-top: 0.5rem;
+      display: inline-block; }
+
+.lastofus .bgImg {
+  background: url("../img/the-last-of-us-part-ii-narrative-trailer-homepage-marquee-desktop-01-ps4-05may20-en-us.jpeg") center center/cover no-repeat; }
+
+.lastofus p,
+.lastofus h2 {
+  color: #fff; }
+
+.lastofus .barContent > div {
+  display: flex;
+  align-items: center; }
+
+.grid-4 img {
+  width: 100%; }
+  .grid-4 img:hover {
+    transform: scale(1.03);
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.15);
+    cursor: pointer; }
+
+.grid-4 .card {
+  margin-bottom: 1.5rem; }
+  .grid-4 .card h4,
+  .grid-4 .card p {
+    margin-top: 0.5rem;
+    color: #333; }
+
+.grid-4 .releaseDate {
+  font-family: "Roboto", sans-serif;
+  font-size: small;
+  font-weight: bold; }
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 10rem;
+  justify-content: center; }
+  .cardHeader p {
+    text-align: center; }
+  .cardHeader:nth-child(1) {
+    font-size: 2rem;
+    color: #333;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px; }
+  .cardHeader .letterSpace {
+    font-size: 1rem;
+    margin-bottom: 0.5rem; }
+
+.fortnite .bgImg {
+  background: url("../img/fortnite-chapter-2-season-3-homepage-marquee-desktop-02-ps4-17jun20-en-us.jpeg") center center/cover no-repeat; }
+
+.fortnite p,
+.fortnite h2 {
+  color: #fff; }
+
+.fortnite .barContent > div {
+  display: flex;
+  align-items: center; }
+
+.grid-3 .card {
+  text-align: center; }
+  .grid-3 .card .letterSpace {
+    margin-bottom: 0.5rem; }
+  .grid-3 .card h3 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    color: #333; }
+
+.fifa .bgImg {
+  background: url("../img/ea-sports-fifa-21-announce-homepage-marquee-desktop-01-ps4-19jun20-en-us.jpeg") center center/cover no-repeat;
+  height: 70vh;
+  position: relative; }
+
+.fifa p,
+.fifa h2 {
+  color: #fff; }
+
+.fifa .barContent > div {
+  display: flex;
+  align-items: center; }
+
+.disintergration .bgImg {
+  background: url("../img/disintegration-homepage-marquee-desktop-01-ps4-us-16jun20-en-us.jpeg") center center/cover no-repeat;
+  height: 70vh;
+  position: relative; }
+
+.disintergration p,
+.disintergration h2 {
+  color: #fff; }
+
+footer {
+  background-color: #00439c; }
+  footer li {
+    list-style: none;
+    font-size: 0.8rem; }
+    footer li a {
+      color: #fff; }
+      footer li a:hover {
+        color: #8fd5fd; }
+  footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 95%; }
+    footer ul .after::before {
+      content: "|";
+      color: #8fd5fd;
+      font-weight: bold;
+      padding-right: 0.8rem; }
+  footer .flexRow {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center; }
+  footer .topFooter {
+    height: 6rem;
+    border-bottom: 1px solid #0070cc; }
+    footer .topFooter .container {
+      height: 100%; }
+  footer .bottomFooter {
+    color: #fff;
+    height: 8rem; }
+    footer .bottomFooter .container > div {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem; }
+      footer .bottomFooter .container > div .nav-leftBottom {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        font-size: 0.9rem; }
+        footer .bottomFooter .container > div .nav-leftBottom > * {
+          padding: 0.3rem; }
+        footer .bottomFooter .container > div .nav-leftBottom h3 {
+          margin-right: 6rem; }
+          footer .bottomFooter .container > div .nav-leftBottom h3 a {
+            color: #fff;
+            text-transform: uppercase; }
+            footer .bottomFooter .container > div .nav-leftBottom h3 a:hover {
+              color: #8fd5fd; }
+  footer .copyright {
+    padding-bottom: 1rem;
+    color: #8fd5fd; }
+
+@media (max-width: 792px) and (min-width: 651px) {
+  #mainNav .underline {
+    display: none; }
+  #mainNav .btn-dark {
+    font-size: 0.8rem; }
+  .subMenus .top ul {
+    gap: 0;
+    height: 100%; }
+    .subMenus .top ul li {
+      width: 115px;
+      height: 115px; }
+    .subMenus .top ul img {
+      height: 2.5rem; }
+  .subMenus .bottom ul {
+    gap: 1.5rem; }
+    .subMenus .bottom ul li {
+      font-size: 1rem; }
+      .subMenus .bottom ul li a {
+        font-size: 0.9rem; }
+  .mainShowcase {
+    height: 85vh; }
+    .mainShowcase #showcaseImg {
+      background-size: 175vw; }
+  .showcase {
+    height: 85vh; }
+    .showcase .bgImg {
+      background-size: 175vw; }
+  .bottomBar {
+    transform: translateY(0);
+    height: 30%;
+    opacity: 1; }
+    .bottomBar.xl {
+      height: 30%; }
+    .bottomBar .barContent {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-evenly;
+      align-items: flex-start; }
+  .divider {
+    display: none; }
+  .btn-orange,
+  .btn-blue {
+    width: 100%;
+    text-align: center; }
+  .ps4pro .flex {
+    flex-direction: column;
+    row-gap: 1rem; }
+    .ps4pro .flex img {
+      width: 100%;
+      margin: 0; }
+    .ps4pro .flex #fromPlaystation {
+      width: 100%;
+      margin: 0; }
+    .ps4pro .flex #content {
+      margin: 0; }
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+    width: 100%; }
+  .grid-3 {
+    grid-template-columns: 1fr;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 3rem; }
+    .grid-3 img {
+      width: 75%; }
+  footer ul {
+    justify-content: start;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    margin-left: 1rem; } }
+
+@media (max-width: 650px) {
+  #wrapper {
+    overflow-x: hidden; }
+  .masterNav {
+    position: fixed;
+    top: 0; }
+  #mobileNav {
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    box-shadow: none; }
+    #mobileNav.open {
+      box-shadow: 5px 3px 5px #777;
+      transition: box-shadow 250ms ease 250ms; }
+    #mobileNav .logo {
+      padding: 0.3rem;
+      color: #0070cc;
+      font-size: 2.2rem; }
+    #mobileNav .mobileMenu {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      #mobileNav .mobileMenu a {
+        padding: 0.3rem; }
+      #mobileNav .mobileMenu .menuBtn {
+        position: relative;
+        height: 100%; }
+        #mobileNav .mobileMenu .menuBtn a {
+          padding: 0.3rem; }
+      #mobileNav .mobileMenu .fa-search {
+        margin-left: 0.2rem;
+        font-size: 1.3rem; }
+      #mobileNav .mobileMenu .fa-times {
+        margin-right: 0.2rem;
+        font-size: 1.8rem;
+        position: absolute;
+        left: 0;
+        visibility: hidden; }
+      #mobileNav .mobileMenu .fa-bars {
+        margin-right: 0.2rem;
+        font-size: 1.5rem; }
+    #mobileNav > a {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #0070cc; }
+  .mainShowcase {
+    height: 70vh; }
+    .mainShowcase #showcaseImg {
+      height: 60vh;
+      background-size: 175vw; }
+    .mainShowcase .bottomBar {
+      transform: translateY(0);
+      height: 30%;
+      opacity: 1; }
+      .mainShowcase .bottomBar .barContent {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-evenly;
+        align-items: flex-start; }
+        .mainShowcase .bottomBar .barContent div {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start; }
+  .showcase {
+    height: 70vh; }
+    .showcase .bgImg {
+      height: 55vh;
+      background-size: 175vw; }
+    .showcase .bottomBar {
+      transform: translateY(0);
+      height: 40%;
+      opacity: 1; }
+      .showcase .bottomBar.xl {
+        height: 15rem; }
+      .showcase .bottomBar .barContent {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-evenly;
+        align-items: flex-start; }
+  .divider {
+    display: none; }
+    .divider::after {
+      content: ""; }
+  .btn-orange,
+  .btn-blue {
+    width: 100%;
+    text-align: center; }
+  .ps4pro .flex {
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 0;
+    margin: auto; }
+    .ps4pro .flex img {
+      width: 100%;
+      margin: 0;
+      margin-top: 4rem; }
+    .ps4pro .flex #fromPlaystation {
+      width: 100%;
+      margin: 0; }
+  .ps4pro #content {
+    margin: 0; }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto;
+    width: 100%; }
+  .grid-3 {
+    grid-template-columns: 1fr;
+    margin: auto;
+    width: 100%; }
+    .grid-3 img {
+      width: 75%; }
+  footer .logo,
+  footer .aboutSony {
+    display: none; }
+  footer .topFooter {
+    height: auto; }
+  footer .footerNav {
+    padding: 1rem 0; }
+  footer ul {
+    justify-content: start;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    margin-left: 1rem; }
+  #sonyBar {
+    position: absolute;
+    bottom: 0; }
+  .rightNav,
+  .desktopIcons {
+    display: none; }
+  .mobileIcons {
+    display: block;
+    color: #aaa; }
+    .mobileIcons:hover {
+      color: #0070cc; }
+    .mobileIcons.current {
+      color: #0070cc; }
+  .masterNav .container {
+    padding: 0; }
+  #mainNav {
+    position: absolute;
+    z-index: -1;
+    top: 4rem;
+    height: 100vh;
+    width: 100vw;
+    padding: 0 1.5rem;
+    display: block;
+    transform: translateX(-100%);
+    transition: transform 500ms ease; }
+    #mainNav.open {
+      transition: transform 500ms ease;
+      transform: translateX(0); }
+    #mainNav .navList {
+      flex-direction: column;
+      width: 100%; }
+      #mainNav .navList li {
+        margin: 0.5rem 0; }
+        #mainNav .navList li.current {
+          background-color: #ebf7ff; }
+      #mainNav .navList .subLinks {
+        display: grid;
+        grid-template-columns: 1fr 1fr 8fr;
+        font-size: 1rem;
+        gap: 2rem; }
+        #mainNav .navList .subLinks:hover {
+          color: #0070cc; }
+        #mainNav .navList .subLinks .fa-chevron-right {
+          justify-self: end; }
+    #mainNav .logo {
+      display: none; }
+  .subMenus {
+    transform: translateY(0);
+    transform: translateX(100%);
+    right: 0;
+    width: 80vw; }
+    .subMenus hr {
+      width: 90%;
+      margin: auto; }
+    .subMenus .menuHeader {
+      display: block;
+      padding: 0.8rem;
+      margin: 0.5rem 0 0 0.5rem; }
+      .subMenus .menuHeader span {
+        margin-left: 0.8rem;
+        justify-self: center; }
+    .subMenus .top {
+      height: 60vh; }
+      .subMenus .top ul {
+        gap: 0.5rem;
+        margin-bottom: 0; }
+        .subMenus .top ul li {
+          width: 115px;
+          height: 115px; }
+        .subMenus .top ul img {
+          height: 3rem; }
+    .subMenus .servicesMenu,
+    .subMenus .newsMenu {
+      height: 100vh; }
+    .subMenus .shopMenu,
+    .subMenus .helpMenu {
+      height: 50vh; }
+    .subMenus .bottom {
+      height: 40vh; }
+      .subMenus .bottom ul {
+        gap: 0.8rem;
+        flex-direction: column;
+        height: 30vh;
+        align-items: flex-start;
+        margin-left: 1rem; }
+      .subMenus .bottom li {
+        list-style: none; }
+  .searchBox.scale {
+    transform: scale(0.5); } }

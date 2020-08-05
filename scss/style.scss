@@ -1,0 +1,800 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+$psBlue: #0070cc;
+$psOrange: #cd3d0f;
+$psLightBlue: #8fd5fd;
+$psDarkBlue: #00439c;
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+// header {
+//   position: relative;
+// }
+
+.ps4pro,
+.gameGallery,
+.exp,
+.digital {
+  background-color: #fff;
+}
+
+#overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 30;
+  position: absolute;
+  overflow-x: hidden;
+  top: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition-property: visibility, opacity;
+  transition-delay: 250ms;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+  &.show {
+    transition-property: all;
+    transition-delay: 250ms;
+    transition-duration: 250ms;
+    transition-timing-function: ease;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.searchBox {
+  width: 100%;
+  display: none;
+  z-index: 35;
+  top: 0;
+  transform-box: border-box;
+  transform: scale(0) translate(100%, 100%);
+  transition-property: transform, margin-top;
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+
+  form {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 5px 5px 10px #222;
+  }
+  &.scale {
+    transition-property: all;
+    transform-box: border-box;
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+    transform: scale(1) translate(0%, 0%);
+    margin-top: 5rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+  }
+
+  input {
+    font-size: 1.5rem;
+    font-weight: 200;
+    padding: 1rem 1rem 1rem 0.5rem;
+    outline: none;
+    width: 25rem;
+    border: none;
+    border-left: solid 1px #ddd;
+  }
+  select {
+    font-size: 1.5rem;
+    outline: none;
+    padding: 1rem 2rem 1rem 0.5rem;
+    border: none;
+  }
+  a {
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: $psBlue;
+    color: #fff;
+  }
+}
+
+// Utility Clases
+.container {
+  padding: 0 1.5rem;
+  display: block;
+  width: 100vw;
+  max-width: 100%;
+  height: 100%;
+}
+
+.showcase {
+  height: 70vh;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.bgImg {
+  transform: scale(1.08);
+  height: 70vh;
+
+  &.scale {
+    transition-property: all;
+    transition-duration: 7s;
+    transition-timing-function: ease-in-out;
+    transform: scaleX(1);
+  }
+}
+
+.btn {
+  padding: 0.6rem 1.1rem;
+  color: #fff;
+
+  &-orange {
+    background-color: $psOrange;
+    padding: 13px 20px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &-blue {
+    background-color: $psBlue;
+    padding: 13px 20px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.divider {
+  &::after {
+    content: "|";
+  }
+}
+
+.letterSpace {
+  letter-spacing: 3px;
+  color: $psBlue;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.grid {
+  &-4 {
+    grid-template-columns: repeat(4, 1fr);
+    display: grid;
+    gap: 1rem;
+    // margin: 0 10rem;
+    width: 80%;
+    margin: auto;
+  }
+
+  &-3 {
+    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-gap: 3rem;
+    // margin: 0 12rem 5rem 12rem;
+    align-items: flex-end;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 5rem;
+
+    img {
+      width: 100%;
+      padding-bottom: 2rem;
+    }
+  }
+
+  &-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.bottomBar {
+  height: 15%;
+  background-color: #222;
+  opacity: 0.9;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(80px);
+  &.show {
+    transition-property: all;
+    transition-duration: 1s;
+    transform: translateY(0px);
+  }
+
+  h2 {
+    padding: 0.5rem;
+  }
+
+  &.xl {
+    height: 16%;
+
+    h2 {
+      // width: 22rem;
+      text-align: center;
+      justify-self: center;
+    }
+  }
+
+  p {
+    color: #fff;
+    // padding: 1rem;
+  }
+
+  .container {
+    height: 100%;
+  }
+
+  .barContent {
+    display: grid;
+    grid-template-columns: 3fr 1fr 15fr 3fr;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    .divider {
+      color: #fff;
+      font-size: 3rem;
+      justify-self: flex-start;
+    }
+
+    a {
+      color: #fff;
+    }
+
+    div {
+      max-width: 88%;
+      //   margin-right: 2rem;
+    }
+  }
+}
+
+.gradient {
+  height: 2px;
+  background: linear-gradient(
+    45deg,
+    rgb(243, 243, 243),
+    rgba(34, 34, 34, 0.9),
+    rgba(34, 34, 34, 0.9)
+  );
+  position: absolute;
+  opacity: 0;
+  background-size: 250%;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  animation: gradient 3s ease infinite alternate;
+  &.xl {
+    bottom: 16%;
+  }
+  &.show {
+    transition-property: opacity;
+    transition-duration: 250ms;
+    transition-delay: 1250ms;
+    opacity: 1;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+  // 100% {
+  //   background-position: 0% 50%;
+  // }
+}
+
+.subMenus {
+  box-shadow: 5px 10px 13px #777;
+  position: absolute;
+  background-color: #fff;
+  opacity: 0;
+  top: 4rem;
+  z-index: -1;
+  visibility: hidden;
+  transform: translateY(-25rem);
+  transition: translate, visibility, 500ms ease;
+  &.show {
+    transition: translate, visibility, 500ms ease;
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
+  &.current {
+    transition: opacity 500ms ease;
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+  .menuHeader {
+    display: none;
+  }
+  .top {
+    height: 10rem;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+      li {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 130px;
+        height: 130px;
+        gap: 0.5rem;
+        &:hover {
+          border: 1px solid #ccc;
+          box-shadow: 1px 1px 4px #666;
+          border-radius: 4px;
+        }
+        .fa-playstation {
+          padding: 0.5rem;
+          background-color: $psDarkBlue;
+          color: #fff;
+          border-radius: 50%;
+        }
+      }
+      img {
+        object-fit: contain;
+        height: 3.5rem;
+      }
+      i {
+        color: $psDarkBlue;
+      }
+    }
+  }
+  .bottom {
+    height: 5rem;
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      height: 4rem;
+      align-items: center;
+    }
+    li {
+      list-style-type: disc;
+      color: $psBlue;
+      font-size: 1.5rem;
+
+      a {
+        font-size: 1rem;
+        &:hover {
+          color: $psBlue;
+        }
+      }
+    }
+  }
+}
+
+// Sony Black Bar
+.blackbar {
+  height: 2.3rem;
+  position: relative;
+  z-index: 25;
+  //   overflow: hidden;
+  background-color: #000;
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  align-items: center;
+
+  img {
+    width: 5rem;
+    justify-self: flex-end;
+    padding-right: 0.5rem;
+  }
+}
+
+// Main Nav
+.masterNav {
+  height: 4rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: #fff;
+  .container {
+    background-color: #fff;
+  }
+}
+
+#mobileNav {
+  display: none;
+}
+
+.mobileIcons {
+  display: none;
+}
+
+#mainNav {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+  background-color: #fff;
+
+  .leftNav {
+    display: flex;
+
+    .logo {
+      padding: 0.3rem;
+      color: $psBlue;
+      font-size: 2.2rem;
+    }
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    // align-items: center;
+    margin-top: 0.5rem;
+
+    li {
+      padding: 0.5rem;
+      line-height: 1.2;
+      font-size: 0.8rem;
+
+      .current {
+        color: $psBlue;
+      }
+
+      a:hover {
+        color: $psBlue;
+      }
+    }
+  }
+
+  .rightNav > * {
+    margin-right: 1rem;
+  }
+
+  .underline {
+    font-size: 0.8rem;
+    padding: 0.8rem;
+
+    &:hover {
+      text-decoration: underline;
+      color: $psBlue;
+    }
+  }
+
+  .fa-search {
+    font-size: 1.2rem;
+  }
+
+  .btn-dark {
+    @extend.btn;
+    background-color: #333;
+    font-weight: 500;
+  }
+}
+
+// Showcase
+
+.mainShowcase {
+  position: relative;
+  // top: 6.3rem;
+  // height: 80vh;
+  // width: 100vw;
+  // z-index: 15;
+  #showcaseImg {
+    background: url("../img/playstation-5-showcase-homepage-marquee-desktop-01-ps5-11jun20-en-us.jpeg")
+      center center/cover no-repeat;
+    height: 70vh;
+    position: relative;
+
+    // p {
+    //   color: #fff;
+    //   padding: 1rem;
+    // }
+  }
+}
+
+// PS4 Pro
+.ps4pro {
+  position: relative;
+}
+.ps4pro .flex {
+  display: flex;
+  padding: 5rem 4rem;
+
+  img {
+    width: 50%;
+    object-fit: contain;
+    margin-left: 3rem;
+  }
+
+  #fromPlaystation {
+    width: 50%;
+    margin-left: 3rem;
+    margin-right: 7rem;
+
+    h2 {
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
+      color: #333;
+    }
+
+    #content {
+      margin: 1rem 0;
+      padding-right: 1rem;
+      font-weight: lighter;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .btn-orange {
+      margin-top: 0.5rem;
+      display: inline-block;
+    }
+  }
+}
+
+// Last of Us section
+
+.lastofus {
+  .bgImg {
+    background: url("../img/the-last-of-us-part-ii-narrative-trailer-homepage-marquee-desktop-01-ps4-05may20-en-us.jpeg")
+      center center/cover no-repeat;
+  }
+  p,
+  h2 {
+    color: #fff;
+    // padding: 0.3rem;
+  }
+
+  .barContent > div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+// Games Gallery
+.grid-4 {
+  img {
+    width: 100%;
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+    }
+  }
+
+  .card {
+    margin-bottom: 1.5rem;
+
+    h4,
+    p {
+      margin-top: 0.5rem;
+      color: #333;
+    }
+  }
+
+  .releaseDate {
+    font-family: "Roboto", sans-serif;
+    font-size: small;
+    font-weight: bold;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 10rem;
+  justify-content: center;
+
+  p {
+    text-align: center;
+  }
+
+  &:nth-child(1) {
+    font-size: 2rem;
+    color: #333;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .letterSpace {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Fortnite Section
+.fortnite {
+  .bgImg {
+    background: url("../img/fortnite-chapter-2-season-3-homepage-marquee-desktop-02-ps4-17jun20-en-us.jpeg")
+      center center/cover no-repeat;
+  }
+  p,
+  h2 {
+    color: #fff;
+    // padding: 0.3rem;
+  }
+
+  .barContent > div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+// Experiences Section
+.grid-3 {
+  .card {
+    text-align: center;
+    // margin-bottom: 4rem;
+
+    .letterSpace {
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      color: #333;
+    }
+  }
+}
+
+// FIFA Section
+.fifa {
+  .bgImg {
+    background: url("../img/ea-sports-fifa-21-announce-homepage-marquee-desktop-01-ps4-19jun20-en-us.jpeg")
+      center center/cover no-repeat;
+    height: 70vh;
+    position: relative;
+  }
+
+  p,
+  h2 {
+    color: #fff;
+    // padding: 0.3rem;
+  }
+
+  .barContent > div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+// Disintegration Section
+.disintergration {
+  .bgImg {
+    background: url("../img/disintegration-homepage-marquee-desktop-01-ps4-us-16jun20-en-us.jpeg")
+      center center/cover no-repeat;
+    height: 70vh;
+    position: relative;
+  }
+
+  p,
+  h2 {
+    color: #fff;
+    // padding: 0.3rem;
+  }
+}
+
+// Footer
+footer {
+  background-color: $psDarkBlue;
+
+  li {
+    list-style: none;
+    font-size: 0.8rem;
+    // font-weight: bold;
+
+    a {
+      color: #fff;
+
+      &:hover {
+        color: $psLightBlue;
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 95%;
+
+    .after::before {
+      content: "|";
+      color: $psLightBlue;
+      font-weight: bold;
+      padding-right: 0.8rem;
+    }
+  }
+
+  .flexRow {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .topFooter {
+    height: 6rem;
+    border-bottom: 1px solid $psBlue;
+
+    .container {
+      height: 100%;
+    }
+  }
+
+  .bottomFooter {
+    color: #fff;
+    height: 8rem;
+
+    .container > div {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+
+      .nav-leftBottom {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        font-size: 0.9rem;
+
+        & > * {
+          padding: 0.3rem;
+        }
+
+        h3 {
+          margin-right: 6rem;
+
+          a {
+            color: #fff;
+            text-transform: uppercase;
+            &:hover {
+              color: $psLightBlue;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .copyright {
+    padding-bottom: 1rem;
+    color: $psLightBlue;
+  }
+}
+
+@import "mobile";
